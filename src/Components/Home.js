@@ -10,8 +10,8 @@ function Home(props){
             <div className="top-section">
                 <Sidebar/>
                 <div className="main-section">
-                    <Header tkn={props.tknString} setTheLogin={props.setLgn} settoken={props.setTkn} logged={props.loginState}/>
-                    <MainSection tkn={props.tknString} logged={props.loginState}/>
+                    <Header/>
+                    <MainSection/>
                 </div>
             </div>
             <Player/>

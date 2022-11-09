@@ -1,26 +1,27 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {setToken, setLoggedIn} from "../redux/features/login/loginSlice";
 
 
-function Header(props){
-
+function Header(){
 
     const navigation=useNavigate();
-
+    const dispatch=useDispatch();
+    const isLoggedIn=useSelector((state)=>state.login.isLoggedin);
+    const token=useSelector((state)=>state.login.token);
    
-    const [data, setData]=useState({});
-
     const getName=async function(e){
         e.preventDefault();
-        console.log(props.tkn);
-        console.log(`Bearer ${props.tkn}`);
+        console.log(token);
+        console.log(`Bearer ${token}`);
         const data=await axios.get("https://api.spotify.com/v1/me",
             {
                 headers: {
-                    Authorization: "Bearer "+ props.tkn,
+                    Authorization: "Bearer "+ token,
                     "Content-Type": "application/json"
                 }
             }
@@ -35,8 +36,14 @@ function Header(props){
             const hash=window.location.hash;
             const token=hash.substring(1).split("&")[0].split("=")[1];
             console.log(token);
-            props.settoken(token);
-            props.setTheLogin(true);
+
+            //Setting the token
+            dispatch(setToken(token));
+
+            //Setting the isLoggedIn flag = true
+            dispatch(setLoggedIn());
+
+            //Setting the URL to blank erasing the token
             window.history.pushState({},null,"/");
             
             
@@ -46,7 +53,7 @@ function Header(props){
         <header>
             
             {
-                props.logged?
+                isLoggedIn?
                 <button className="profile">
                     <div>
                         <FontAwesomeIcon icon={faUser}/>
