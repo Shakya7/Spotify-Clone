@@ -87,6 +87,68 @@
   background-color: #0c0c7c;
   color:white;
 }
+
+/******* LOGIN PAGE ********/
+.login-page{
+  height:100vh;
+  background-color: #121212;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap:2rem;
+}
+
+.login-sec{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:1rem;
+}
+.login-sec p{
+  font-size: 10em;
+  color:#42A12A;
+  font-family: "Poppins";
+  font-weight: bolder;
+}
+.login-page>:last-child{
+  background-color: #302e2e;
+  border: none;
+  padding:1rem 2rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+  cursor:pointer;
+}
+.login-page>:last-child:hover{
+  background-color: #42A12A;
+}
+.login-page>:last-child a{
+  text-decoration: none;
+  color:white
+}
+
+@media screen and (max-width:850px){
+  .login-sec p{
+    font-size: 17vw;
+  }
+  .login-sec img{
+    width: 27vw;
+  }
+}
+
+@media screen and (max-width:450px){
+  .login-sec{
+    flex-direction: column;
+  }
+  .login-page>:last-child{
+    padding:5vw;
+  }
+  .login-page>:last-child a{
+    font-size: 5vw;
+  }
+}
+
+
 /********** SIDEBAR *********/
 
 .sidebar{

@@ -1,3 +1,4 @@
+import logo from "../images/spotify-logo-login-page.png";
 
 const scope = [
     "user-read-private",
@@ -23,10 +24,13 @@ let URL=`https://accounts.spotify.com/authorize?client_id=${client_ID}&response_
 
 function Login(){
     return(
-        <>
-            <div>Please Login</div>
-            <button><a href={URL}>Login here</a></button>
-        </>
+        <div className="login-page">
+            <div className="login-sec">
+                <img src={logo} alt="logo"/>
+                <p>Spotify</p>
+            </div>
+            <button><a href={URL}>LOGIN</a></button>
+        </div>
     )
 
 }
