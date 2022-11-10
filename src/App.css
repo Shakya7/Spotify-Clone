@@ -96,7 +96,10 @@
   height:100%;
   color:white;
   /*overflow:scroll;*/
+  display:flex;
+  flex-direction: column;
 }
+
 
 .logo{
   color:white;
@@ -127,6 +130,7 @@
   gap:1rem;
   margin-top: 1rem;
 }
+
 
 .playlist-liked{
   margin-top:2.5rem;
@@ -171,4 +175,43 @@
   margin:0 1.3rem;
   border-bottom:0.2px solid grey;
   padding:0.5rem;
+}
+
+.playlists{
+  padding:1rem 1.2rem;
+  overflow: scroll;
+  overflow-x: hidden;
+  font-size: 0.8rem;
+
+}
+
+.playlists::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+.playlists::-webkit-scrollbar-track {
+  background: #121212;        /* color of the tracking area */
+}
+.playlists::-webkit-scrollbar-thumb {
+  background-color: rgb(68, 68, 70);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  /* border: 3px solid orange;  creates padding around scroll thumb */
+}
+
+.playlist-section{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+  
+}
+.playlist-section li{
+  overflow-x: scroll;
+  color:#858181;
+  cursor:pointer;
+}
+.playlist-section li:hover{
+  color:white;
+}
+.playlist-section li::-webkit-scrollbar{
+  display:none;
 }

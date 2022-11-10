@@ -4,7 +4,7 @@ import MainSection from "./MainSection";
 import Player from "./Player";
 
 
-function Home(props){
+function Home(){
     return(
         <div className="body">
             <div className="top-section">
