@@ -9,10 +9,14 @@ import axios from "axios";
 import { useEffect} from "react";
 import {setPlayliststoZero, setPlaylists} from "../redux/features/profile/profileSlice";
 import Playlists from "./Playlists";
+import { useNavigate } from "react-router-dom";
 
 import logo from "../images/spotify-logo.png"
 
 function Sidebar(){
+    
+    const navigation=useNavigate();
+
     const isLoggedIn=useSelector((state)=>state.login.isLoggedin);
     const token=useSelector((state)=>state.login.token);
     
@@ -49,7 +53,7 @@ function Sidebar(){
                 <span>Spotify</span>    
             </div>
             <div className="home-search-library">
-                <div>
+                <div onClick={()=>navigation("/")}>
                     <FontAwesomeIcon className="icon" icon={faHouse} />
                     <p>Home</p>
                 </div>
