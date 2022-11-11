@@ -30,7 +30,8 @@
 /****** HEADER ******/
 
 .main-section>header{
-  background-image: linear-gradient(to right bottom, #302e2e, #2c2a2b, #272627, #232323, #1f1f1f);
+  /* background-image: linear-gradient(to right bottom, #302e2e, #2c2a2b, #272627, #232323, #1f1f1f); */
+  background-color: transparent;
   height:15%;
   display:flex;
   justify-content: flex-end;

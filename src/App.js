@@ -1,6 +1,8 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
+import Profile from "./Components/Profile";
+import MainSection from "./Components/MainSection";
 
 
 import './App.css';
@@ -11,7 +13,10 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Home/>}>
+            <Route index element={<MainSection/>}/>
+            <Route path="/me" element={<Profile/>}/>
+          </Route>
           <Route path="/login" element={<Login/>}/>
         </Routes>
       </div>

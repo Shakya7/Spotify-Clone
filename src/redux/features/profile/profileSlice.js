@@ -2,6 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const profileState={
     profileId:"",
+    name:"",
+    email:"",
+    // image:"",
+    followers:0,
     playlists:[],
 }
 
@@ -12,6 +16,15 @@ export const profileSlice=createSlice({
         setProfileID:(state,action)=>{
             state.profileId=action.payload;
         },
+        setName:(state,action)=>{
+            state.name=action.payload;
+        },
+        setEmail:(state,action)=>{
+            state.email=action.payload;
+        },
+        setFollowers:(state,action)=>{
+            state.followers=action.payload;
+        },
         setPlayliststoZero:(state)=>{
             state.playlists=[];
         },
@@ -21,5 +34,5 @@ export const profileSlice=createSlice({
     }
 })
 
-export const {setProfileID, setPlayliststoZero, setPlaylists} =profileSlice.actions;
+export const {setProfileID, setName, setEmail, setFollowers, setPlayliststoZero, setPlaylists} =profileSlice.actions;
 export default profileSlice.reducer;

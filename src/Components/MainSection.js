@@ -1,9 +1,11 @@
+import Random from "./Random";
 
 function MainSection(){
 
     return(
         <main>
-        Main
+            Main
+            <Random/>
         </main>
     )
 }

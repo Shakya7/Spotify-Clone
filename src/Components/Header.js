@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {setToken, setLoggedIn} from "../redux/features/login/loginSlice";
+import {setProfileID, setName, setEmail, setFollowers} from "../redux/features/profile/profileSlice";
 
 
 function Header(){
@@ -14,9 +15,8 @@ function Header(){
     const isLoggedIn=useSelector((state)=>state.login.isLoggedin);
     const token=useSelector((state)=>state.login.token);
    
-    const getName=async function(e){
-        e.preventDefault();
-        console.log(token);
+    const setProfileData=async function(e){
+        //e.preventDefault();
         console.log(`Bearer ${token}`);
         const data=await axios.get("https://api.spotify.com/v1/me",
             {
@@ -27,16 +27,19 @@ function Header(){
             }
         )
         console.log(data);
+        dispatch(setProfileID(data.data.id));
+        dispatch(setName(data.data.display_name));
+        dispatch(setEmail(data.data.email));
+        dispatch(setFollowers(data.data.followers.total));
+
         
     }   
+
     
     useEffect(()=>{
-        console.log("Checking");
         if(window.location.hash){
             const hash=window.location.hash;
             const token=hash.substring(1).split("&")[0].split("=")[1];
-            console.log(token);
-
             //Setting the token
             dispatch(setToken(token));
 
@@ -48,17 +51,20 @@ function Header(){
             
             
         }
+        if(isLoggedIn){
+            setProfileData();
+        }
     })
     return(
         <header>
             
             {
                 isLoggedIn?
-                <button className="profile">
+                <button onClick={()=>navigation("/me")} className="profile">
                     <div>
                         <FontAwesomeIcon icon={faUser}/>
                     </div>   
-                    <p onClick={getName}>
+                    <p>
                     Profile       
                     </p>
                     <FontAwesomeIcon icon={faCaretDown}/>

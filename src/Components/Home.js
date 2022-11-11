@@ -1,7 +1,7 @@
 import Sidebar from "./Sidebar";
 import Header from "./Header";
-import MainSection from "./MainSection";
 import Player from "./Player";
+import { Outlet } from "react-router-dom";
 
 
 function Home(){
@@ -11,7 +11,7 @@ function Home(){
                 <Sidebar/>
                 <div className="main-section">
                     <Header/>
-                    <MainSection/>
+                    <Outlet/>
                 </div>
             </div>
             <Player/>
