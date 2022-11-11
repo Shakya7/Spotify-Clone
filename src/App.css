@@ -268,7 +268,7 @@
 }
 .playlists::-webkit-scrollbar-thumb {
   background-color: rgb(68, 68, 70);    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
+  border-radius: 2px;       /* roundness of the scroll thumb */
   /* border: 3px solid orange;  creates padding around scroll thumb */
 }
 
