@@ -13,7 +13,7 @@
 .top-section{
   width:100%;
   height:87vh;
-  background-image: linear-gradient(to bottom, #636060, #6e6a6c, #363535, #2a2a2a, #1f1f1f);
+  background: linear-gradient( #636060, #1f1f1f);
   display: flex;
 }
 .bottom-section{
@@ -44,10 +44,12 @@
 
 .main-section>header{
   /* background-image: linear-gradient(to right bottom, #302e2e, #2c2a2b, #272627, #232323, #1f1f1f); */
-  background-color: transparent;
+  background-color: yellow;
   height:13%;
   display:flex;
   justify-content: flex-end;
+  position: sticky;
+  top:0;
  
 
 }
@@ -225,6 +227,9 @@
 .home-search-library p:hover, .playlist-liked p:hover{
   color:white;
 }
+.home-search-library div:hover{
+
+}
 .home-search-library>:first-child, 
 .home-search-library>:nth-child(2), 
 .home-search-library>:last-child, 
@@ -241,6 +246,7 @@
 }
 .icon{
   font-size:1.4rem;
+  color:grey
 }
 .icon-create{
   font-size: 1.55rem;
