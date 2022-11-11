@@ -22,7 +22,6 @@
   border-top:1px solid #5a5858
 }
 
-
 .main-section{
   width:82%;
   overflow: scroll;
@@ -44,14 +43,13 @@
 
 .main-section>header{
   /* background-image: linear-gradient(to right bottom, #302e2e, #2c2a2b, #272627, #232323, #1f1f1f); */
-  background-color: yellow;
+  background-color: transparent;
   height:13%;
   display:flex;
   justify-content: flex-end;
   position: sticky;
   top:0;
  
-
 }
 
 .profile{
@@ -180,7 +178,6 @@
  
 }
 
-
 .logo{
   color:white;
   background-color: azure;
@@ -211,24 +208,19 @@
   margin-top: 1rem;
 }
 
-
 .playlist-liked{
   margin-top:2.5rem;
 }
-.home-search-library p{
+.home-search-library p, .playlist-liked p{
   color: grey;
   transition: color 0.2s ease-in-out;
 }
-.playlist-liked p{
-  color: grey;
-  transition: color 200ms ease-in-out;
-}
 
-.home-search-library p:hover, .playlist-liked p:hover{
-  color:white;
-}
-.home-search-library div:hover{
-
+.home-search-library div:hover .icon, 
+.home-search-library div:hover .text-sidebar, 
+.playlist-liked div:hover .text-sidebar,
+.playlist-liked>:first-child:hover .icon{
+  color:white
 }
 .home-search-library>:first-child, 
 .home-search-library>:nth-child(2), 
@@ -246,11 +238,10 @@
 }
 .icon{
   font-size:1.4rem;
-  color:grey
+  color:grey;
+  transition: color 200ms ease-in-out;
 }
-.icon-create{
-  font-size: 1.55rem;
-}
+
 .heart{
   font-size: 1.4rem;
   color:rgb(211, 60, 60);
@@ -303,6 +294,6 @@
 
 /***** Profile Section *****/
 
-.profile-main{
- 
-}
+/* .profile-main{
+  
+} */

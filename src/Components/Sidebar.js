@@ -55,25 +55,25 @@ function Sidebar(){
             <div className="home-search-library">
                 <div onClick={()=>navigation("/")}>
                     <FontAwesomeIcon className="icon" icon={faHouse} />
-                    <p>Home</p>
+                    <p className="text-sidebar">Home</p>
                 </div>
                 <div>
                     <FontAwesomeIcon className="icon" icon={faMagnifyingGlass} />
-                    <p>Search</p>
+                    <p className="text-sidebar">Search</p>
                 </div>
                 <div>
                     <FontAwesomeIcon className="icon" icon={faRecordVinyl} />
-                    <p>Your Library</p>
+                    <p className="text-sidebar">Your Library</p>
                 </div>
             </div>
             <div className="playlist-liked">
                 <div>
-                    <FontAwesomeIcon className="icon-create" icon={faSquarePlus} />
-                    <p>Create Playlist</p>
+                    <FontAwesomeIcon className="icon" icon={faSquarePlus} />
+                    <p className="text-sidebar">Create Playlist</p>
                 </div>
                 <div>
                     <FontAwesomeIcon className="heart" icon={faHeart} />
-                    <p>Liked Songs</p>
+                    <p className="text-sidebar">Liked Songs</p>
                 </div>
             </div>
             <div className="hr-bar"></div>
