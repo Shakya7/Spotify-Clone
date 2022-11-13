@@ -16,8 +16,8 @@ function Header(){
     const token=useSelector((state)=>state.login.token);
    
     const setProfileData=async function(e){
-        //e.preventDefault();
-        console.log(`Bearer ${token}`);
+        
+        //console.log(`Bearer ${token}`);
         const data=await axios.get("https://api.spotify.com/v1/me",
             {
                 headers: {
@@ -31,15 +31,14 @@ function Header(){
         dispatch(setName(data.data.display_name));
         dispatch(setEmail(data.data.email));
         dispatch(setFollowers(data.data.followers.total));
-
         
     }   
 
-    
     useEffect(()=>{
         if(window.location.hash){
             const hash=window.location.hash;
             const token=hash.substring(1).split("&")[0].split("=")[1];
+
             //Setting the token
             dispatch(setToken(token));
 
@@ -48,7 +47,6 @@ function Header(){
 
             //Setting the URL to blank erasing the token
             window.history.pushState({},null,"/");
-            
             
         }
         if(isLoggedIn){

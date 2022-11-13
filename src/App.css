@@ -13,7 +13,8 @@
 .top-section{
   width:100%;
   height:87vh;
-  background: linear-gradient( #636060, #1f1f1f);
+  background: linear-gradient( #a19e9e, #1f1f1f);
+  background-position: center;
   display: flex;
 }
 .bottom-section{
@@ -297,3 +298,7 @@
 /* .profile-main{
   
 } */
+
+.playlist-page{
+ 
+}
