@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 
 import logo from "../images/spotify-logo.png"
 
+import { fetchNewReleases } from "../redux/features/profile/profileSlice";
+
 function Sidebar(){
     
     const navigation=useNavigate();
@@ -44,6 +46,7 @@ function Sidebar(){
     useEffect(()=>{
         if(isLoggedIn){
             getPlaylist();
+            dispatch(fetchNewReleases({token}));
         }    
     })
     return(

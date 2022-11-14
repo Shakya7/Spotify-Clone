@@ -1,8 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 
 const Profile = () => {
+  const name=useSelector((state)=>state.profile.name.split(" ")[0]);
+
+  
+
   return (
     <main className="profile-main">
           <div>
@@ -12,11 +17,13 @@ const Profile = () => {
               </div>
               <div className="profile-top-info">
                 <p>PROFILE</p>
-                <p>Shakya</p>
+                <p>{name?name:"User_name"}</p>
               </div>
             </div>
           </div>
-          <p>Dfdfd</p>
+          <div>
+
+          </div>
           
         
     </main>
