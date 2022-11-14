@@ -41,31 +41,6 @@ export const fetchPlaylistData=createAsyncThunk("playlist/fetchPlaylistData",asy
 export const playlistSlice=createSlice({
     name:"playlist",
     initialState:playListState,
-    // reducers:{
-    //     setPlaylistID:(state,action)=>{
-    //         state.playlistId=action.payload;
-    //     },
-    //     setImages:(state,action)=>{
-    //         state.images=[];
-    //         state.images.push(action.payload);
-    //     },
-    //     setPlaylistName: (state,action)=>{
-    //         state.name=action.payload;
-    //     },
-    //     setPlaylistFollowers:(state,action)=>{
-    //         state.followers=action.payload;
-    //     },
-    //     setSnapshotID:(state,action)=>{
-    //         state.snapshot_ID=action.payload;
-    //     },
-    //     setDescription: (state,action)=>{
-    //         state.description=action.payload;
-    //     },
-    //     setTracks:(state,action)=>{
-    //         state.tracks=[];
-    //         state.tracks.push(action.payload);
-    //     }
-    // }
     extraReducers:(builder)=>{
         builder.addCase(fetchPlaylistData.pending,(state)=>{
             state.status="pending"
@@ -113,5 +88,4 @@ export const playlistSlice=createSlice({
 
 });
 
-// export const {setPlaylistID,setImages, setPlaylistName, setPlaylistFollowers, setSnapshotID, setDescription, setTracks} =playlistSlice.actions;
 export default playlistSlice.reducer;
