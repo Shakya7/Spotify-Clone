@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins&display=swap');
 
 *{
   margin:0;
@@ -290,10 +291,49 @@
   overflow-x: hidden;
   height:100%;
 }
-.profile-main div{
-  background-color: #dc143c;
+.profile-main>:first-child{
+  background-image: linear-gradient(to left bottom, #404142, #3d3e3f, #37393a, #444748, #3e4141);
+  min-height:65%;
+  display:flex;
+}
+.profile-main>:first-child>:first-child{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  margin-left:2.6rem;
+  margin-bottom: 2.6rem;
+}
+.profile-big-icon{
+  width: 15em;
+  height: 15em;
+  background-image: linear-gradient(#3E4141,#333436);
+  border-radius: 50%;
+  box-shadow: 0 0 3em 0.30em rgba(0, 0, 0, 0.582);
+  margin-right:2rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-big-icon>:first-child{
+  font-size: 3.5rem;
+  color:rgb(139, 134, 134);
 }
 
+.profile-top-info{
+  margin-bottom:2rem;
+}
+.profile-top-info>:first-child{
+  font-size:0.7rem;
+  font-weight: bold;
+  color: white;
+}
+.profile-top-info>:last-child{
+  font-size:5.5rem;
+  font-weight: bolder;
+  color: white;
+  font-family: Montserrat;
+  letter-spacing: -1px;
+}
 .profile-main::-webkit-scrollbar{
   width:10px;
 }
