@@ -25,20 +25,8 @@
 
 .main-section{
   width:82%;
-  overflow: scroll;
-  overflow-x: hidden;
 }
-.main-section::-webkit-scrollbar{
-  width:auto;
-}
-.main-section::-webkit-scrollbar-track{
-  background-color: transparent;
 
-}
-.main-section::-webkit-scrollbar-thumb{
-  background-color: rgb(153, 153, 156);    /* color of the scroll thumb */
-  border-radius: 2px;
-}
 
 /****** HEADER ******/
 
@@ -46,9 +34,10 @@
   /* background-image: linear-gradient(to right bottom, #302e2e, #2c2a2b, #272627, #232323, #1f1f1f); */
   background-color: transparent;
   height:13%;
+  width:82%;
   display:flex;
   justify-content: flex-end;
-  position: sticky;
+  position: absolute;
   top:0;
  
 }
@@ -265,7 +254,7 @@
   width: 12px;               /* width of the entire scrollbar */
 }
 .playlists::-webkit-scrollbar-track {
-  background: #121212;        /* color of the tracking area */
+  background: transparent;        /* color of the tracking area */
 }
 .playlists::-webkit-scrollbar-thumb {
   background-color: rgb(68, 68, 70);    /* color of the scroll thumb */
@@ -295,9 +284,28 @@
 
 /***** Profile Section *****/
 
-/* .profile-main{
-  
-} */
+.profile-main{
+  background: linear-gradient( #db8181, #1f1f1f);
+  overflow-y: overlay;
+  overflow-x: hidden;
+  height:100%;
+}
+.profile-main div{
+  background-color: #dc143c;
+}
+
+.profile-main::-webkit-scrollbar{
+  width:10px;
+}
+.profile-main-section::-webkit-scrollbar-track{
+  background: #dc143c;
+
+}
+.profile-main::-webkit-scrollbar-thumb{
+  background-color: rgba(204, 204, 209, 0.829);    /* color of the scroll thumb */
+  opacity: 0;
+  border-radius: 2px;
+}
 
 .playlist-page{
  
