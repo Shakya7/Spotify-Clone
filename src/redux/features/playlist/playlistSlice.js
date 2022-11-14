@@ -21,8 +21,6 @@ const playListState={
 //id and token can be passed as arguments while dispatching fetchPlaylistData(_,_)
 
 export const fetchPlaylistData=createAsyncThunk("playlist/fetchPlaylistData",async({id,token},{rejectWithValue})=>{
-    console.log("The id is ",id);
-    console.log("Token is ",token);
     try{
         const data=await axios.get(`https://api.spotify.com/v1/playlists/${id}`,{
             headers: {
@@ -69,6 +67,9 @@ export const playlistSlice=createSlice({
 
             //setting the total tracks
             state.total_tracks=action.payload.tracks.total
+
+            //setting the image
+            state.images=action.payload.images[0]
 
             //*****setting fetching flag to FALSE*****//
             state.fetching=false;
