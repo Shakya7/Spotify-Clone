@@ -3,6 +3,8 @@ import axios from "axios";
 import {useEffect, useLayoutEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import SavingSpinner from "../loading-spinners/SavingSpinner";
+import {setLoggedIn} from "../redux/features/login/loginSlice";
+import {useDispatch} from "react-redux";
  
 // const scope = [
 //     "streaming",
@@ -30,6 +32,7 @@ import SavingSpinner from "../loading-spinners/SavingSpinner";
 
 function Login(){
     const navigation=useNavigate();
+    const dispatch=useDispatch();
     const [credentials,setCredentials]=useState({
         email:"",
         password:""
@@ -81,6 +84,7 @@ function Login(){
                             setIsLoading(true);
                             const data=await login();
                             console.log(data);
+                            dispatch(setLoggedIn());
                             setIsLoading(false);
                             navigation("/");
                         }catch(err){
