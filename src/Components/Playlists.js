@@ -12,6 +12,7 @@ function Playlists(){
             playlists.map((item)=><li onClick={()=>navigation(`/playlist/${item.id}`)} key={item.id}>{item.name}</li>)
         }
         </ul>
+        
     )
 }
 export default Playlists;

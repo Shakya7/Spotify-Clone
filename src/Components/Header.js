@@ -68,7 +68,12 @@ function Header(){
                     <FontAwesomeIcon icon={faCaretDown}/>
                 </button>:
                 <button className="login">
-                    <p onClick={()=>navigation("/login")}>LOGIN</p>
+                    <p onClick={async()=>{
+                        //console.log("OKAY",process.env.REACT_APP_CALLBACK_URL)
+                        //const data=await axios.get(`${process.env.REACT_APP_CALLBACK_URL}/`);
+                        //console.log(data);
+                        navigation("/login");
+                    }}>LOGIN</p>
                 </button>
             }
         </header>

@@ -15,7 +15,7 @@ const profileState={
 
 export const fetchNewReleases=createAsyncThunk("profile/fetchNewReleases",async({token},{rejectWithValue})=>{
     try{
-        const data=await axios.get("https://api.spotify.com/v1/browse/new-releasesh",{
+        const data=await axios.get("https://api.spotify.com/v1/browse/new-releases",{
             headers: {
             Authorization: "Bearer "+ token,
             "Content-Type": "application/json"
@@ -58,7 +58,7 @@ export const profileSlice=createSlice({
 
         builder.addCase(fetchNewReleases.fulfilled,(state,action)=>{
             state.newReleases=[];
-            state.newReleases.push(action.payload.items);
+            state.newReleases=action.payload.items;
             state.status="fulfilled"
         })
 

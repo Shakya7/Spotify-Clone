@@ -4,43 +4,27 @@ import {useEffect, useLayoutEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import SavingSpinner from "../loading-spinners/SavingSpinner";
  
-// const scope = [
-//     "streaming",
-//     "user-read-private",
-//     "user-read-email",
-//     "user-modify-playback-state",
-//     "user-read-playback-state",
-//     "user-read-currently-playing",
-//     "user-read-recently-played",
-//     "playlist-read-private",
-//     "playlist-read-collaborative",
-//     "playlist-modify-private",
-//     "playlist-modify-public",
-//     "user-top-read",
-//     "ugc-image-upload"
-//   ];
-
-// const client_ID=process.env.REACT_APP_CLIENT_ID;
-// const redirect_URI="http://localhost:3000";
 
 
-
-// let URL=`https://accounts.spotify.com/authorize?client_id=${client_ID}&response_type=token&redirect_uri=${redirect_URI}&scope=${scope.join(" ")}&show_dialog=true`;
-
-
-function Login(){
+function Signup(){
     const navigation=useNavigate();
     const [credentials,setCredentials]=useState({
         email:"",
-        password:""
+        password:"",
+        name:"",
+        confirmPassword:"",
     });
     const [failure,setFailure]=useState(false);
     const [isLoading,setIsLoading]=useState(false);
-    async function login(){
+
+    async function signup(){
         try{
-            let data=await axios.post(`${process.env.REACT_APP_CALLBACK_URL}/api/v1/users/login`,{
+            let data=await axios.post(`${process.env.REACT_APP_CALLBACK_URL}/api/v1/users/signup`,{
+                name:credentials.name,
                 email:credentials.email,
-                password:credentials.password
+                password:credentials.password,
+                confirmPassword:credentials.confirmPassword,
+
             },{withCredentials:true});
             return data.data;
         }catch(err){
@@ -59,7 +43,14 @@ function Login(){
             </div>
             <hr/>
             <form className="login-main">
-                <p>To continue, login to Spotify</p>
+                <p>To access Spotify, please Sign up</p>
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <input onFocus={()=>setFailure(false)} id="name" type={"text"} placeholder="Name" onChange={(e)=>setCredentials({
+                        ...credentials,
+                        name:e.target.value
+                    })}/>
+                </div>
                 <div>
                     <label htmlFor="email">Email address</label>
                     <input onFocus={()=>setFailure(false)} id="email" type={"email"} placeholder="Email address" onChange={(e)=>setCredentials({
@@ -75,11 +66,18 @@ function Login(){
                     })}/>
                 </div>
                 <div>
+                    <label htmlFor="c-pw">Confirm Password</label>
+                    <input onFocus={()=>setFailure(false)} id="c-pw" type={"password"} placeholder="Confirm Password" onChange={(e)=>setCredentials({
+                        ...credentials,
+                        confirmPassword:e.target.value
+                    })}/>
+                </div>
+                <div>
                     <button className="login-btn" onClick={async(e)=>{
                         e.preventDefault();
                         try{
                             setIsLoading(true);
-                            const data=await login();
+                            const data=await signup();
                             console.log(data);
                             setIsLoading(false);
                             navigation("/");
@@ -89,9 +87,9 @@ function Login(){
                             setFailure(true);
                         }
                     }}>{
-                        !isLoading?"Login":
+                        !isLoading?"Sign Up":
                         <div className="login-loading" style={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"row"}}>
-                            <p>Logging in...</p>
+                            <p>Signing up...</p>
                             <SavingSpinner/>
                         </div>
                     }</button>
@@ -101,14 +99,14 @@ function Login(){
                 <p className="forgot-pw-link"style={{textAlign:"center"}}>Forgot password?</p>
             </form>
             <div className="login-footer">
-                <b>Don't have an account yet?</b>
+                <b>Already have an account?</b>
                 <button onClick={(e)=>{
                     e.preventDefault();
-                    navigation("/signup");
-                }}>Signup</button>
+                    navigation("/login");
+                }}>Login</button>
             </div>
         </div>
     )
 
 }
-export default Login;
+export default Signup;

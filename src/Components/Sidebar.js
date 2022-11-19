@@ -25,7 +25,7 @@ function Sidebar(){
     const dispatch=useDispatch();
 
     async function getPlaylist(){
-        const data=await axios.get("https://api.spotify.com/v1/me/playlist",{
+        const data=await axios.get("https://api.spotify.com/v1/me/playlists",{
             headers: {
                 Authorization: "Bearer "+ token,
                 "Content-Type": "application/json"
