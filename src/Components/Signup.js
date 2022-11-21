@@ -1,13 +1,17 @@
 import logo from "../images/spotify-logo-login-page.png";
 import axios from "axios";
-import {useEffect, useLayoutEffect, useState} from "react";
+import {useLayoutEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import SavingSpinner from "../loading-spinners/SavingSpinner";
+import {setProfileID, setName, setEmail, setPlayliststoZero, setPlaylists} from "../redux/features/profile/profileSlice";
+import {setLoggedIn} from "../redux/features/login/loginSlice";
+import {useDispatch} from "react-redux";
  
 
 
 function Signup(){
     const navigation=useNavigate();
+    const dispatch=useDispatch();
     const [credentials,setCredentials]=useState({
         email:"",
         password:"",
@@ -79,6 +83,10 @@ function Signup(){
                             setIsLoading(true);
                             const data=await signup();
                             console.log(data);
+                            dispatch(setProfileID(data.data.user._id));
+                            dispatch(setName(data.data.user.name));
+                            dispatch(setEmail(data.data.user.email));
+                            dispatch(setLoggedIn());
                             setIsLoading(false);
                             navigation("/");
                         }catch(err){

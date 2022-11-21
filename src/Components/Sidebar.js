@@ -13,42 +13,42 @@ import { useNavigate } from "react-router-dom";
 
 import logo from "../images/spotify-logo.png"
 
-import { fetchNewReleases } from "../redux/features/profile/profileSlice";
+//import { fetchNewReleases } from "../redux/features/profile/profileSlice";
 
 function Sidebar(){
     
     const navigation=useNavigate();
 
     const isLoggedIn=useSelector((state)=>state.login.isLoggedin);
-    const token=useSelector((state)=>state.login.token);
+    //const token=useSelector((state)=>state.login.token);
     
     const dispatch=useDispatch();
 
-    async function getPlaylist(){
-        const data=await axios.get("https://api.spotify.com/v1/me/playlists",{
-            headers: {
-                Authorization: "Bearer "+ token,
-                "Content-Type": "application/json"
-            }
-        });
-        console.log("Playlists....");
-        dispatch(setPlayliststoZero());
-        data.data.items.map((item)=>{
-            const playlist={
-                id:item.id,
-                name: item.name
-            }
-            //return console.log(playlist);
-            return dispatch(setPlaylists(playlist))
+    // async function getPlaylist(){
+    //     const data=await axios.get("https://api.spotify.com/v1/me/playlists",{
+    //         headers: {
+    //             Authorization: "Bearer "+ token,
+    //             "Content-Type": "application/json"
+    //         }
+    //     });
+    //     console.log("Playlists....");
+    //     dispatch(setPlayliststoZero());
+    //     data.data.items.map((item)=>{
+    //         const playlist={
+    //             id:item.id,
+    //             name: item.name
+    //         }
+    //         //return console.log(playlist);
+    //         return dispatch(setPlaylists(playlist))
 
-        });
-    }
-    useEffect(()=>{
-        if(isLoggedIn){
-            getPlaylist();
-            dispatch(fetchNewReleases({token}));
-        }    
-    })
+    //     });
+    // }
+    // useEffect(()=>{
+    //     if(isLoggedIn){
+    //         getPlaylist();
+    //         dispatch(fetchNewReleases({token}));
+    //     }    
+    // })
     return(
         <div className='sidebar'>
             <div className='logo-section'>

@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import SavingSpinner from "../loading-spinners/SavingSpinner";
 import {setLoggedIn} from "../redux/features/login/loginSlice";
 import {useDispatch} from "react-redux";
+import {setProfileID, setName, setEmail, setPlayliststoZero, setPlaylists} from "../redux/features/profile/profileSlice";
  
 // const scope = [
 //     "streaming",
@@ -84,6 +85,9 @@ function Login(){
                             setIsLoading(true);
                             const data=await login();
                             console.log(data);
+                            dispatch(setProfileID(data.data.user._id));
+                            dispatch(setName(data.data.user.name));
+                            dispatch(setEmail(data.data.user.email));
                             dispatch(setLoggedIn());
                             setIsLoading(false);
                             navigation("/");

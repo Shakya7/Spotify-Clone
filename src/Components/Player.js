@@ -1,4 +1,3 @@
-import SpotifyPlayer from "react-spotify-web-playback";
 import { useSelector } from "react-redux";
 
 function Player(){
@@ -6,7 +5,7 @@ function Player(){
     const isLoggedIn=useSelector((state)=>state.login.isLoggedin);
     return(
         <div className="bottom-section">
-            {isLoggedIn?<SpotifyPlayer token={token} uris={[]}/>:"Footer"}
+            Footer
         </div>
     )
 }

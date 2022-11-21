@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 function Playlists(){
     const {playlists}=useSelector((state)=>state.profile);
-    console.log(playlists);
     const navigation=useNavigate();
 
     return(
