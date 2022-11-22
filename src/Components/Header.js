@@ -1,17 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useLayoutEffect } from "react";
+import { faUser, faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useLayoutEffect, useState, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {setLoggedIn} from "../redux/features/login/loginSlice";
 import {setProfileID, setName, setEmail} from "../redux/features/profile/profileSlice";
+import { ProfileDropdownContext } from "../App";
+import { ProfileBtnRef } from "../App";
+
 
 function Header(){
+    const [dropdown, setDropdown]=useContext(ProfileDropdownContext);
+    const profileDropdownRef=useContext(ProfileBtnRef);
 
     const navigation=useNavigate();
     const dispatch=useDispatch();
     const isLoggedIn=useSelector((state)=>state.login.isLoggedin);
+
+    const [caretDown,setCarretDown]=useState(true);
 
     async function loadData(payload){
         try{
@@ -46,25 +53,41 @@ function Header(){
             console.log(err);
         }
     }
+
     
     useLayoutEffect(()=>{
         checkAndLoad();
 
     },[])
+
+    useEffect(()=>{
+        
+    },[dropdown])
+
     return(
-        <header>
-            
+        <header>  
             {
                 isLoggedIn?
-                <button onClick={()=>navigation("/me")} className="profile">
-                    <div>
-                        <FontAwesomeIcon icon={faUser}/>
-                    </div>   
-                    <p>
-                    Profile       
-                    </p>
-                    <FontAwesomeIcon icon={faCaretDown}/>
-                </button>:
+                <>
+                    <button onClick={()=>{
+                        setCarretDown((prev)=>!prev);
+                        setDropdown((prev)=>!prev);
+                        }} className="profile" ref={profileDropdownRef}>
+                        <div>
+                            <FontAwesomeIcon icon={faUser}/>
+                        </div>   
+                        <p>
+                        Profile       
+                        </p>
+                        {caretDown?<FontAwesomeIcon icon={faCaretDown}/>:<FontAwesomeIcon icon={faCaretUp}/>}
+                        {dropdown?<section className="profile-dropdown">
+                            <p onClick={()=>navigation("/me")}>Profile</p>
+                            <p>Logout</p>
+                        </section>:""}
+                    </button>
+                    
+                </>
+                :
                 <button className="login">
                     <p onClick={async()=>{
                         navigation("/login");
