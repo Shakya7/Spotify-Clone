@@ -51,6 +51,15 @@ function Header(){
             console.log(err);
         }
     }
+    async function logout(){
+        try{
+            await axios.get(`${process.env.REACT_APP_CALLBACK_URL}/api/v1/users/logout`,{
+                withCredentials:true
+            });
+        }catch(err){
+            throw err.message
+        }
+    }
 
     
     useLayoutEffect(()=>{
@@ -80,7 +89,11 @@ function Header(){
                         {caretDown?<FontAwesomeIcon icon={faCaretDown}/>:<FontAwesomeIcon icon={faCaretUp}/>}
                         {dropdown?<section className="profile-dropdown">
                             <p onClick={()=>navigation("/me")}>Profile</p>
-                            <p>Logout</p>
+                            <p onClick={async()=>{
+                                window.location.reload();
+                                await logout();
+                                navigation("/");
+                            }}>Logout</p>
                         </section>:""}
                     </button>
                     
