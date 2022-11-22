@@ -15,7 +15,7 @@ export const ProfileBtnRef=createContext();
 
 function App() {
   const [dropdown,setDropdown]=useState(false);
-  // const [caretDown,setCarretDown]=useState(true);
+  const [caretDown,setCarretDown]=useState(true);
   const profileDropdownRef=useRef(null);
 
   useEffect(()=>{
@@ -26,7 +26,7 @@ function App() {
     if(!profileDropdownRef.current.contains(e.target)){
       console.log("Clicked outside");
       setDropdown(false);
-      //setCarretDown(true);
+      setCarretDown(true);
     }
     else{
       console.log("Clicked inside");
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ProfileDropdownContext.Provider value={[dropdown,setDropdown]}>
+      <ProfileDropdownContext.Provider value={[dropdown,caretDown,setDropdown, setCarretDown]}>
         <ProfileBtnRef.Provider value={profileDropdownRef}>
           <div className="App">
             <Routes>

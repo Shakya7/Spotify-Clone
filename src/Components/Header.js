@@ -11,14 +11,12 @@ import { ProfileBtnRef } from "../App";
 
 
 function Header(){
-    const [dropdown, setDropdown]=useContext(ProfileDropdownContext);
+    const [dropdown, caretDown, setDropdown, setCarretDown]=useContext(ProfileDropdownContext);
     const profileDropdownRef=useContext(ProfileBtnRef);
 
     const navigation=useNavigate();
     const dispatch=useDispatch();
     const isLoggedIn=useSelector((state)=>state.login.isLoggedin);
-
-    const [caretDown,setCarretDown]=useState(true);
 
     async function loadData(payload){
         try{
